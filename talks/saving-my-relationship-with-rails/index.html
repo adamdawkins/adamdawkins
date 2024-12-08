@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Adam Dawkins</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/languages/ruby.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+
+  </head>
+  <body>
+    <h1 id="savingmyrelationshipwithrails">Saving my relationship with Rails</h1>
+    <p><em>Functional Domain; Rails Web App</em></p>
+    <section>
+    <h2 id="railsrelatonshipstatus">Rails relationship status</h2>
+    <p>I first met Ruby on Rails at @media conference in London in 2009. It was love at first sight [site]. I was watching a dual-talk side-track demoing Ruby on Rails and Django. The Ruby on Rails developer built a blog in their 15 minute slot. This was something I could get involved with.</p>
+    <p>I continued to see Rails on and off around my front-end developer day job until 2013, when things got more serious and I went freelance as a Rails developer, and later in 2016 made it the tech-stack-of-choice at Dragon Drop.</p>
+    <p>Convention-over-configuration, the ease with which I could setup database relationships, the speed with which I could build new applications. The honeymoon period was everything I wanted.</p>
+    <p>As I stand here eleven years later. Things have changed. In my day job, I type <code>rails new</code> about once a year. I don't scaffold anymore. Instead, I'm working on applications that have been around for three, four or five years, and Rails and I have started awkwardly avoiding each other around the hallways of our repositories. We stay together (for the kids?), but often our goals clash. People grow, applications grow. Priorities change.</p>
+    <p>Current relationship status? It's <em>complicated</em>.</p>
+    <p>Or, to put that a different way, it's <em>complex</em>. Complexity happened.</p>
+    </section>
+    <section>
+    <h2 id="complexity">Complexity</h2>
+    <blockquote>
+      <p>Complexity inevitably increases over the life of any program
+      <footer> &mdash; John Ousterhout, <cite>A Philosophy of Software Design</cite></footer>
+    </blockquote>
+
+    <p>These graphs show the complexity of some of my applications overtime.</p>
+    <p>I'm fairly confident the complexity graph of all software development ever follows this trend.</p>
+    <p>Often we use the word 'complex' as a synonym for 'hard', but they're not actually the same thing.</p>
+
+    <blockquote>
+      <p><strong>complex</strong> (<em>adj</em>), 1650s: "composed of interconnected parts, formed by a combination of simple things or elements"
+      from <em>com</em> - with, <em>together</em> + <em>plectere</em> "to wear, braid, twine, entwine".</p>
+      <footer>&mdash; <cite><a href="http://etymonline.com/word/complex">Online Etymology Dictionary</a></cite></footer>
+    </blockquote>
+    <p>What's nice about this definition is that it leads us to this verb from the 1570s:</p>
+    <blockquote>
+      <p><strong>complect</strong>: 1520s, "to embrace;" 1570s, "to weave together;" from Late Latin complectus, past participle of complectere "to embrace, encircle," from Latin com "with" (see com-) + plectere "to plait," from suffixed form of PIE root *plek- "to plait."</p>
+      <footer>&mdash; <cite><a href="https://etymonline.com/word/complect">Online Etymology Dictionary</a></cite></p>
+    </blockquote>
+    <p>Our apps get more complex because we keep complecting them. Often, this is necessary, and from two different sources.</p>
+    <h3 id="1technicalcomplexity">1. Technical Complexity</h3>
+
+    <p>Technological complexity increases with technological advancement. If you were building a web application 20 years ago, when Rails was released, you wouldn't be thinking about real-time updates, or probably even device-width. YouTube hadn't been released, so you may not have been dealing with streaming or video either. There were no push notifications.</p>
+    <p>Technical complexity can grow for other reasons, as a tool or product grows, maybe we support other languages, payment methods, authentication methods etc</p>
+    <p>Part of the skill of being a web-developer in 2024 is knowing how to complect these things elegantly. Part of the requirements of a good framework is it's ability to do so.</p>
+
+    <h3 id="2domaincomplexity">2. Domain complexity</h3>
+    <blockquote>
+      <p>There are many things that make software development complex. But the heart of this complexity is the essential intricacy of the problem domain itself.</p>
+      <footer>&mdash; Martin Fowler, Introduction to <cite>Domain-Specific Design</cite></footer>
+    </blockquote>
+
+    <p>Domain complexity is different to technological complexity, it's the complexity of the problem your application is there to solve.</p>
+    <p>As an example, I have an (I think) well-written class in one of my applications called <code>CommissionCalculator</code>. It's 100 lines long. Not because of the code, but because the real-world commission structure the application is modelling <em>is that complex</em>. It's been complected before we've even written a line of code. But this complexity is not related to the technical complexity of our web app.</p>
+
+    <h3 id="anexample">An Example</h3>
+    <p>To illustrate the difference between these complexities, let's think about something away from the web, say, a popular football-simulation sports game.</p>
+    <p>It's Domain is complex - it has to encompass:</p>
+    <ul>
+      <li>Physics</li>
+      <li>Player attributes</li>
+      <li>Team tactics</li>
+      <li>Match Simulation</li>
+      <li>League rules</li>
+      <li>Transfer market rules
+        and so on.</li>
+    </ul>
+    <p>But it has technological complexities too:</p>
+    <ul>
+      <li>Rendering</li>
+      <li>Multiplayer </li>
+      <li>Cross device capabilities</li>
+      <li>In-app payments
+        and so on.</li>
+    </ul>
+    <h3 id="thehiddencomplecting">The Hidden Complecting</h3>
+    <p>Often, we have no choice about either of these complexities growing overtime. Moreover, it's usually a good thing.</p>
+    <p>But there is one complecting we have a choice over. The hidden complexity of entwining (complecting) our technical complexity with our domain complexity. This is a choice.</p>
+    <p>Domain and tech complexity have to exist, but we don’t have to mix them.</p>
+    <p>My side of the story is that it's this part of complexity that Rails really struggles with.</p>
+    <h3 id="railsandcomplexity">Rails and Complexity</h3>
+    <p>At time of writing the <a href="https://rubyonrails.org">Ruby on Rails homepage</a> itself talks about complexity:</p>
+    <blockquote>
+      <p>Compress the complexity of modern web apps.</p>
+    </blockquote>
+    <p>When I first read this, I thought I must be doing something wrong. My assumption, and the whole premise of this presentation, is that Rails doesn't have a good way of handling domain complexity, and actively encourages complecting domain and technology.</p>
+    <p>The homepage continues:</p>
+    <blockquote>
+      <p><em>Everything you need</em>: Rendering HTML templates, updating databases, sending and receiving emails, maintaining live pages via WebSockets, enqueuing jobs for asynchronous work, storing uploads in the cloud, providing solid security protections for common attacks. Rails does it all and so much more.</p>
+    </blockquote>
+    <p>All seven of things listed under the heading 'everything you need' into the 'technical complexity' category. What does Rails offer for Domain Complexity?</p>
+    <p>Business logic, which is more or less equivalent to 'domain complexity', gets one mention.</p>
+    <blockquote>
+      <p>Databases come to life with business logic encapsulated in rich objects. Modeling associations between tables, providing callbacks when saved, encrypting sensitive data seamlessly, and expressing SQL queries beautifully.</p>
+    </blockquote>
+    <p>Active Record. </p>
+    <p><em>Rails is really good at managing technical complexity</em>, but it's solution to business logic and domain thinking talks about <em>Databases</em> 4 times.</p>
+    <p>And our domains are so much more than databases.</p>
+    <h3 id="cruddy">CRUDdy</h3>
+    <blockquote>
+      <p>You know what's the biggest tragedy in software engineering?
+      The customers gave up and learnt to speak CRUD to developers.</p>
+      <ul>
+        <li>Tweet by Andrzej Krzywda, 3 Oct 2015</li>
+      </ul>
+    </blockquote>
+    <p>Databases are technological concerns. Unless the business problem you're solving is for a company that manages databases, the probably have no part of the domain at all. </p>
+    <p>Of course, in 99% of the apps we build, we'll need to persist the data, but that doesn't mean that relational-databases are the only way to describe the relationship between concepts in a rich real-world domain.</p>
+    <p>Too often, with our tool-set full of conventions, database-first thinking leads to user experiences that feel like a thin layer over an <code>INSERT</code> or <code>UPDATE</code> statement. Inspired by Andrzej's tweet, I call this CRUDdy development.</p>
+    <blockquote>
+      <p><strong>cruddy</strong>: adjective informal
+      dirty, unpleasant, or of poor quality</p>
+      <footer>&mdash; <cite><a href="https://dictionary.cambridge.org/dictionary/english/cruddy">Cambridge Dictionary</a></cite></footer>
+    </blockquote>
+    <p>Thinking about domain problems exclusively in SQL makes cruddy apps.</p>
+    <h3 id="othermodelsexist">Other models exist</h3>
+    <p>Whole frameworks and strategies have been set up to tackle <em>domain</em> complexity; and Rails offers none of them. The sub-title of Eric Evans' famous <em>Domain-Driven Design</em> is "Tackling Complexity at the Heart of Software". </p>
+    <p>To do so, it offers eight types of object or class that can be used to reason about a domain, with an additional 15 concepts. ActiveRecord <em>can't</em> be all that's needed.</p>
+    </section>
+    <section>
+    <h2 id="functions">Functions</h2>
+    <p>Let's take a break from the big things, and talk about the smaller units of our world of programming. Functions, or, in Ruby, methods.</p>
+    <p>Take this function as an example:</p>
+    <p>Can you tell what it does? Assuming you worked it out it was an <code>add</code> function, why was it so clear?</p>
+    <p>This type of function has 3 key properties:</p>
+    <ol>
+      <li>Explicit inputs</li>
+      <li>Predictable outputs</li>
+      <li>No side-effects</li>
+    </ol>
+    <p>When a function has these properties, it's called 'pure' in functional programming. As soon as we take some any one of these properties away, guessing how it will behave becomes much more difficult.</p>
+    <h3 id="save">Save</h3>
+    <p>What does this return?</p>
+    <pre><code class="language-ruby">@user.save</code></pre>
+    <p>Usually, a boolean. But it also changes <code>@user</code>:</p>
+    <pre><code class="language-ruby">@user = User.find(1)        
+=> #&lt;User id: 1, first_name: "Joe", last_name: "Bloggs">
+
+@user.first_name = "Joanne"
+=> "Joanne"
+
+@user.changed?             
+=> true
+
+@user.save                  
+=> true
+
+@user.changed?              
+=> false
+    </code></pre>
+    <p>If you go down the callback route Rails mentioned on their home page, and do something like this:</p>
+    <pre><code class="language-ruby">class User < ApplicationRecord
+  before_save :normalize_email
+  after_save  :log_name_change, if: :saved_change_to_name?
+  after_save  :create_profile, if: :saved_change_to_id?
+  after_save  :send_welcome_email, if: :saved_change_to_id?
+  after_save  :broadcast_user_update
+end
+    </code></pre>
+    <p>then it returns&hellip; well, it who the hell knows anymore.</p>
+    <p>Even if we avoid ActiveRecord callback hell, and play it safe. <code>save</code> talks to the database, which means, it <em>could</em> also return any of these exceptions:</p>
+    <pre><code class="language-ruby">@user.save # => [Boolean, @user*,
+           #              AdapterNotFound,
+           #              AdapterNotSpecified,
+           #              AttributeAssignmentError,
+           #              ConnectionError,
+           #              ConnectionFailed,
+           #              ConnectionTimeoutError,
+           #              Deadlocked,
+           #              InvalidForeignKey,
+           #              LockWaitTimeout,
+           #              QueryCanceled,
+           #              ReadOnlyRecord,
+           #              RecordInvalid,
+           #              RecordNotDestroyed,
+           #              RecordNotSaved,
+           #              RecordNotUnique,
+           #              Rollback,
+           #              SerializationTypeMismatch,
+           #              StatementInvalid,
+           #              UnknownAttributeError,
+           #              ConnectionBad (PostgreSQL-specific),
+           #              SocketError,
+           #              StandardError,
+           #              Error]
+    </code></pre>
+    <p>And this method, <code>ActiveRecord::Base#save</code>, is where Rails is telling me to place by business logic. And I wonder if it would be possible to have an app made of things that look much more like our <code>add</code> function.</p>
+    </section>
+    <section>
+    <h2 id="functionalcoreimperativeshell">Functional Core, Imperative Shell</h2>
+    <p>In his talk <em>Boundaries</em>, Gary Bernhardt talks about the idea of a functional core, imperative shell. The idea is that you can have a core of your application that is pure, and a shell that is impure. The core is where your business logic lives, and the shell is where the side-effects happen.</p>
+    <p>I think we can update this slightly in a Rails-paradigm, and aim at <em>functional domain, Rails web app</em>.</p>
+    </section>
+    <section>
+    <h2 id="anexample-1">An Example</h2>
+    <p>We're building a booking system for a library. The rules around borrowing are the following:</p>
+    <ol>
+      <li>A member can only borrow 3 books at a time</li>
+      <li>A member can only borrow one copy of the same book</li>
+      <li>A member with overdue fees can't borrowing a book</li>
+      <li>The copy of the book must be available to be borrowed</li>
+      <li>Rare books have a shorter return date</li>
+      <li>Admins are notified when rare books are borrowed.</li>
+    </ol>
+    <h3 id="therailsway">The Rails Way</h3>
+    <h4 id="model">Model</h4>
+    <pre><code class="language-ruby">class Borrowing < ApplicationRecord
+  BORROWING_LIMIT = 3
+
+  belongs_to :member
+  belongs_to :copy
+
+  validate :copy_is_available?, on: :create
+  validate :member_is_under_borrowing_limit, on: :create
+  validate :member_has_no_duplicate_books, on: :create
+  validate :member_has_no_outstanding_fees, on: :create
+end
+    </code></pre>
+    <h4 id="controller">Controller</h4>
+    <pre><code class="language-ruby">class BorrowingsController < ApplicationController
+  def create
+    @borrowing = Borrowing.new(borrowing_params)
+
+    if @borrowing.save
+      AdminMailer.with(borrowing: @borrowing)
+        .rare_book_borrowed_notification
+        .deliver_later if @borrowing.rare_book?
+      redirect_to @borrowing, notice: "Borrowing was successfully created."
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  # &hellip;
+
+end
+    </code></pre>
+    <h3 id="afunctionaldomainapproach">A Functional Domain Approach</h3>
+    <p>I should note that, this isn't actually exactly how I write these, but I didn't want to introduce even more concepts into the presentation form of this article:</p>
+    <h4 id="domain">Domain</h4>
+    <pre><code class="language-ruby">class BorrowABook
+  def call
+    check_borrow_limit
+    check_fees
+    check_copy_availability
+    check_already_borrowed
+
+    if errors.any?
+      decisions = [CannotBorrow.new(errors:)]
+    else
+      decisions << BorrowBook.new(due_date:)
+    end
+
+    decisions << NotifyLibrarianOfRareCopy.new if rare
+
+    decisions
+    end
+  end
+    </code></pre>
+    <h4 id="railscontroller">Rails Controller</h4>
+    <pre><code class="language-ruby">class BorrowingsController < ApplicationController
+
+        def create
+          decisions = BorrowABook.call(currently_borrowed_books: current_member.borrowed_books,
+                                       fees: current_member.fees,
+                                       copy_available: @copy.available?,
+                                       rare: @copy.rare?)
+
+          decisions.each do |decision|
+            case decision
+            when BorrowBook
+              borrowing = Borrowing.create!(member: current_member, 
+                                            copy_id: params[:copy_id],
+                                            due_date: decision.due_date)
+            when NotifyLibrarianOfRareCopy
+              AdminMailer.with(copy: @copy).notify_rare_borrowing.deliver_later
+
+            when CannotBorrow
+
+            render :new, notice: "Cannot borrow this book",
+                                  errors: decision.errors
+            end
+        end
+    end
+
+# &hellip;
+end
+    </code></pre>
+    <p>The methods in the domain class look very similar to the methods in the model in the Rails example, but this subtle change, this extra file, changes everything.</p>
+    <p><code>BorrowABook</code> is now pure. It has explicit inputs, predictable outputs, and no side-effects.</p>
+    <p>In a Rails app this gives us:</p>
+    <ol>
+      <li><p>A clear separation of concerns
+        Not in the usual way this term is used, but a very specific line between where the <em>decisions</em> are made and where the web app happens. This helps us in so many ways. The git history of each of these steps will tell us a lot about if we're changing the rules of the decisions all the time, or changing the web app all the time. </p></li>
+      <li><p>Predictable behaviour
+        The library's rules about borrowing don't rely on anything that can change unexpectedly. Given the same inputs, it will always return the same result. </p></li>
+      <li><p>Testability
+        A whole talk could be presented on the testing gains we get from this approach. The domain is unit tested, without loading Rails. It's fast, and there are no mocks or stubs, because it's all testing values.</p></li>
+    </ol>
+    <p>In the core, we have a lot of different paths through the code, as it's making decisions, but very few integrations, which is what Unit Tests are great at.</p>
+    <p>On the Rails side, we can test our integrations between the various parts of the system, but because the branching is in a different place, we have few paths to test, so our slower integration tests have less to do.</p>
+    <ol start="4">
+      <li>It's Understandable</li>
+    </ol>
+    <p>I appreciate that it may not seem more understandable, because it's not what we're familiar with in Rails. But Ruby is a beautifully idiomatic and expressive language, and when you only express the rules of the domain, it's actually shareable with non-developers in your teams. I've shared the rules of some parts of the domain with clients, and they've verified or corrected it, without necessarily realising I've sent them code.</p>
+    <p>Once the technology layer gets involved, I have to start cropping out parts about broadcast and cache columns, and it becomes a lot less clear exactly what's going on.</p>
+    <h3 id="separatingtostaytogether">Separating to stay together</h3>
+    <p>Rails and I aren't separating, but we are finding ways to create more distance in our relationship. Rails is great at compressing the <em>techincal</em> complexity of modern web apps, but I need to keep the domain away from that for it to work.</p>
+    </section>
+    <section>
+    <h2 id="credits">Credits</h2>
+    <ul>
+      <li>complecting - Rich Hickey, "<a href="https://www.youtube.com/watch?v=SxdOUGdseq4">Simple Made Easy</a>", 2011</li>
+      <li><a href="https://unsplash.com/photos/timelapse-photo-of-soccer-player-kicking-ball-cuhQcfp3By4">Football image</a>: Jannes Glas </li>
+      <li>CRUD <a href="https://x.com/andrzejkrzywda/status/650272559733321728">tweet</a>: Andrzej Krzywda, 2015 </li>
+      <li><a href="https://www.youtube.com/watch?v=P1vES9AgfC4">Moving I/O to the Edges of Your App</a> - Scott Wlaschin, 2024</li>
+      <li>Functional Core, Imperative Shell - Gary Bernhardt, "<a href="https://www.youtube.com/watch?v=yTkzNHF6rMs">Boundaries</a>", 2012</li>
+      <li>Code example help: <a href="https://flyht.uk">Ben Morrison</a></li>
+    </ul>
+    </section>
+  </body>
+</html>
