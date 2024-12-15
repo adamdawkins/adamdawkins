@@ -9,5 +9,9 @@ RSpec.describe AdamController, type: :routing do
     it "routes to #create" do
       expect(post: "/adam").to route_to("adam#create")
     end
+
+    it "routes to #destroy" do
+      expect(delete: "/adam").to route_to("adam#destroy")
+    end
   end
 end

@@ -12,4 +12,10 @@ class AdamController < ApplicationController
       render :new, status: :unauthorized
     end
   end
+
+  # DELETE /adam
+  def destroy
+    session[:adam] = nil
+    redirect_to root_url
+  end
 end
