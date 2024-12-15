@@ -201,6 +201,7 @@ GEM
     rake (13.2.1)
     rdoc (6.9.0)
       psych (>= 4.0.0)
+    redcarpet (3.6.0)
     regexp_parser (2.9.3)
     reline (0.5.12)
       io-console (~> 0.5)
@@ -321,6 +322,7 @@ DEPENDENCIES
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.1)
+  redcarpet (~> 3.6)
   rspec-rails
   rubocop-rails-omakase
   solid_cable

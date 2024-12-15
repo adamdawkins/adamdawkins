@@ -27,3 +27,5 @@ group :development, :test do
 
   gem "rspec-rails"
 end
+
+gem "redcarpet", "~> 3.6"
