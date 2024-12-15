@@ -1,0 +1,3 @@
+<% if session[:adam] %>
+ <p>You're me <%= button_to "Logout", adam_path, method: :delete %></p>
+<% end %>
