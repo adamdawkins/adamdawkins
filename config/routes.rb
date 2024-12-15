@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :notes
+  resources :notes do
+    resources :publishings, only: :create
+    delete "publishings" => "publishings#destroy"
+  end
+
   namespace :adam do
     get "new"
     post "" => :create
