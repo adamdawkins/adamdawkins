@@ -1,0 +1,14 @@
+<% content_for :title, "New adam" %>
+
+<h1>New adam</h1>
+
+<%= form_tag adam_path, method: :post do %>
+  <div>
+    <%= label_tag :password %>
+    <%= text_field_tag :password %>
+  </div>
+
+  <div>
+    <%= submit_tag %>
+  </div>
+<% end %>
