@@ -2,22 +2,25 @@ require 'rails_helper'
 
 RSpec.describe "/notes", type: :request do
   let(:valid_attributes) { { body: "Hello" } }
+  let(:published_attributes) { { body: "Hello", published_at: Time.zone.now } }
 
   let(:invalid_attributes) { { body: nil } }
 
   describe "GET /notes" do
     it "renders a successful response" do
-      Note.create! valid_attributes
+      Note.create! published_attributes
       get notes_url
       expect(response).to be_successful
     end
   end
 
   describe "GET /notes/1" do
-    it "renders a successful response" do
-      note = Note.create! valid_attributes
-      get note_url(note)
-      expect(response).to be_successful
+    context "with a published note" do
+      let(:note) { Note.create! published_attributes }
+      it "renders a successful response" do
+        get note_url(note)
+        expect(response).to be_successful
+      end
     end
   end
 
