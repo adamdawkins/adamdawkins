@@ -100,6 +100,11 @@ section {
   border-top: 1px solid #ccc;
 }
 
+section article {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
 pre, code {
 /*   font-family: "Courier New", monospace; */
   font-size: 1rem;
