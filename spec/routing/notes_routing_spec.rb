@@ -10,6 +10,10 @@ RSpec.describe NotesController, type: :routing do
       expect(get: "/notes/new").to route_to("notes#new")
     end
 
+    it "routes /:year/:ordinal_day/t/:time to #show" do
+      expect(get "2024/164/t/150001").to route_to("notes#show", year: "2024", ordinal_day: "164", time: "150001")
+    end
+
     it "routes to #show" do
       expect(get: "/notes/1").to route_to("notes#show", id: "1")
     end

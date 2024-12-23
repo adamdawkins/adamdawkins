@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get ":year/:ordinal_day/t/:time" => "notes#show"
   resources :notes do
     resources :publishings, only: :create
     delete "publishings" => "publishings#destroy"
