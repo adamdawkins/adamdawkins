@@ -1,12 +1,7 @@
-<div id="<%= dom_id note %>">
-  <p>
-    <strong>Body:</strong>
-    <%= markdown note.body %>
-  </p>
+<article id="<%= dom_id note %>">
+  <%= markdown note.body %>
 
-  <p>
-    <strong>Published at:</strong>
-    <%= note.published_at %>
-  </p>
-
-</div>
+  <small>
+    <%= link_to note.published_at.to_fs(:short), note %>
+  </small>
+</article>
