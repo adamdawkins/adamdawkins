@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_action :authenticate_adam!, only: %i[ new edit create update destroy]
-  before_action :set_note, only: %i[ show edit update destroy ]
+  before_action :set_note, only: %i[ edit update destroy ]
 
   # GET /notes
   def index
@@ -9,6 +9,11 @@ class NotesController < ApplicationController
 
   # GET /notes/1
   def show
+    if params[:id]
+    @note = Note.find(params[:id])
+    else
+      @note = Note.find_by_permalink(params.permit!.to_h)
+    end
   end
 
   # GET /notes/new

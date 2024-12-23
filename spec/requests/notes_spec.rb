@@ -24,6 +24,14 @@ RSpec.describe "/notes", type: :request do
     end
   end
 
+  describe "GET /2024/32/t/125959" do
+    before { Note.create! valid_attributes.merge(published_at: Time.zone.parse("2024-02-01T12:59:59")) }
+    it "renders a successful response" do
+      get "/2024/32/t/125959"
+      expect(response).to be_successful
+    end
+  end
+
   describe "GET /notes/new" do
     subject(:req) { get new_note_url }
 
