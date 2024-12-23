@@ -1,7 +1,14 @@
-<article id="<%= dom_id note %>">
-  <%= markdown note.body %>
-
+<article id="<%= dom_id note %>" class="h-entry">
+  <div class="e-content">
+    <%= markdown note.body %>
+  </div>
   <small>
-    <%= link_to note.published_at.to_fs(:short), note %>
+    Published
+    <%= link_to note_permalink_path(note), class: "u-url" do %>
+      <time class="dt-published" datetime="<%= note.published_at.to_fs(:iso8601) %>">
+        <%= note.published_at.to_fs(:short) %>
+      </time>
+    <% end %>
+
   </small>
 </article>
