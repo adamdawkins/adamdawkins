@@ -15,7 +15,7 @@ gem "solid_cable"
 
 gem "bootsnap", require: false
 
-gem "thruster", require: false
+gem "thruster", "0.1.8", require: false
 
 
 group :development, :test do
