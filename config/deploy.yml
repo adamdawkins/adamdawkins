@@ -1,29 +1,13 @@
-service: adamdawkins
-
-image: adamdawkins
-
+service: adamdawkins_com
+image: circusfrog/adamdawkinscom
 servers:
-  app:
-    - 159.65.87.47
-  web:
-    - 159.65.87.47
-
-<%# proxy: %>
-<%#   ssl: true %>
-<%#   host: myapp.example.com %>
-
+  - 159.65.87.47
 registry:
-  username: local
+  username: circusfrog
   password:
     - KAMAL_REGISTRY_PASSWORD
-
+builder:
+  arch: amd64
 env:
   secret:
     - RAILS_MASTER_KEY
-
-volumes:
-  - "app_storage:/app/storage"
-
-builder:
-    arch: amd64
-
