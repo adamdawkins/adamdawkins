@@ -65,7 +65,6 @@ Rails.application.configure do
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   config.hosts = [
-    "138.68.131.86",         # Allow requests from this IP address
     "adamdawkins.com",     # Allow requests from adamdawkins.com
     /.*\.adamdawkins\.com/ # Allow requests from subdomains like `www.adamdawkins.com`
   ]
