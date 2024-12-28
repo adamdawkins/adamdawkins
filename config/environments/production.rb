@@ -68,6 +68,9 @@ Rails.application.configure do
     "adamdawkins.com",     # Allow requests from adamdawkins.com
     /.*\.adamdawkins\.com/ # Allow requests from subdomains like `www.adamdawkins.com`
   ]
+
+    config.hosts << ENV["FULL_DOMAIN"] if ENV["FULL_DOMAIN"].present?
+
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
