@@ -29,3 +29,5 @@ group :development, :test do
 end
 
 gem "redcarpet", "~> 3.6"
+
+gem "pg", "~> 1.5"
