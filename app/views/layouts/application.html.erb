@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Adamdawkins" %></title>
+    <title><%= content_for(:title) || "Adam Dawkins" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -16,6 +16,10 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <!-- IndieWeb related links -->
+    <link rel="me" href="https://github.com/adamdawkins">
+    <link rel="me" href="https://ruby.social/@adamdawkins">
+    <link rel="webmention" href="https://webmention.io/adamdawkins.com/webmention">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app %>
@@ -23,8 +27,8 @@
   </head>
 
   <body>
-    <header class="site-header h-card">
-      <h1><%= link_to "Adam Dawkins", root_path, class: "site-title p-name u-url" %></h1>
+    <header class="site-header">
+      <h1><%= link_to "Adam Dawkins", root_path, class: "site-title" %></h1>
       <%= render "shared/navigation" %>
     </header>
     <%= render "shared/login" %>
