@@ -100,6 +100,11 @@ section {
   border-top: 1px solid #ccc;
 }
 
+section.bio {
+  border-top: none;
+  padding-top: 0;
+}
+
 section article {
   padding-bottom: 1rem;
   border-bottom: 1px solid #ccc;
@@ -114,6 +119,47 @@ pre, code {
 }
 
 
+/* Header and Navigation */
+header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+}
+
+header .site-title {
+  color: #111;
+  border-bottom: none;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.main-nav li {
+  margin: 0 1.5rem 0 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+  border-bottom: none;
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+  color: #007acc;
+}
+
 /* Responsive Adjustments */
 @media (min-width: 768px) {
   body {
@@ -125,5 +171,23 @@ pre, code {
   }
   h2 {
     font-size: 2rem;
+  }
+  
+  .main-nav ul {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 767px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  .main-nav ul {
+    flex-wrap: wrap;
+  }
+  
+  .main-nav li {
+    margin-bottom: 0.5rem;
   }
 }

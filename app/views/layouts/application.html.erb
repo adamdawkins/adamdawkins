@@ -23,7 +23,13 @@
   </head>
 
   <body>
+    <header class="site-header h-card">
+      <h1><%= link_to "Adam Dawkins", root_path, class: "site-title p-name u-url" %></h1>
+      <%= render "shared/navigation" %>
+    </header>
     <%= render "shared/login" %>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
