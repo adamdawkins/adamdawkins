@@ -1,14 +1,25 @@
 <article id="<%= dom_id note %>" class="h-entry">
   <div class="e-content">
-    <%= markdown note.body %>
+    <% if note.published_at %>
+      <%= link_to notes_permalink_path(year: note.published_at.year, 
+                                       ordinal_day: note.published_at.yday, 
+                                       time: note.published_at.strftime('%H%M%S')), class: "u-url" do %>
+        <%= markdown note.body %>
+      <% end %>
+    <% else %>
+      <%= markdown note.body %>
+    <% end %>
   </div>
   <small>
-    Published
-    <%= link_to note_permalink_path(note), class: "u-url" do %>
-      <time class="dt-published" datetime="<%= note.published_at.to_fs(:iso8601) %>">
-        <%= note.published_at.to_fs(:short) %>
-      </time>
+    <% if note.published_at %>
+      Published
+      <%= link_to notes_permalink_path(year: note.published_at.year, 
+                                     ordinal_day: note.published_at.yday, 
+                                     time: note.published_at.strftime('%H%M%S')), class: "u-url" do %>
+        <time class="dt-published" datetime="<%= note.published_at.to_fs(:iso8601) %>">
+          <%= note.published_at.to_fs(:short) %>
+        </time>
+      <% end %>
     <% end %>
-
   </small>
 </article>

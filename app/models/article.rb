@@ -7,10 +7,19 @@ class Article < ApplicationRecord
     date = Date.ordinal(year.to_i, ordinal_day.to_i)
 
     # re-insert the colons into the time
-    time.match?(/^\d{6}$/) ? time.insert(2, ":").insert(5, ":") : nil
+    formatted_time = if time.match?(/^\d{6}$/)
+                       time_copy = time.dup
+                       time_copy.insert(2, ":").insert(5, ":")
+                     else
+                       time
+                     end
 
-    published_at = Time.zone.parse("#{date}T#{time}")
+    published_at = Time.zone.parse("#{date}T#{formatted_time}")
 
     find_by(published_at:)
+  end
+
+  def to_param
+    id.to_s
   end
 end

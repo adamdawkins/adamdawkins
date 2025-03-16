@@ -30,7 +30,14 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
 
     if @note.save
-      redirect_to @note, notice: "Note was successfully created."
+      if @note.published_at
+        redirect_to notes_permalink_path(year: @note.published_at.year, 
+                                  ordinal_day: @note.published_at.yday, 
+                                  time: @note.published_at.strftime('%H%M%S')), 
+                  notice: "Note was successfully created."
+      else
+        redirect_to note_path(@note), notice: "Note was successfully created."
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,7 +46,15 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1
   def update
     if @note.update(note_params)
-      redirect_to @note, notice: "Note was successfully updated.", status: :see_other
+      if @note.published_at
+        redirect_to notes_permalink_path(year: @note.published_at.year, 
+                                  ordinal_day: @note.published_at.yday, 
+                                  time: @note.published_at.strftime('%H%M%S')), 
+                  notice: "Note was successfully updated.", 
+                  status: :see_other
+      else
+        redirect_to note_path(@note), notice: "Note was successfully updated.", status: :see_other
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -54,11 +69,11 @@ class NotesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_note
-      @note = Note.find(params.expect(:id))
+      @note = Note.find(params.require(:id))
     end
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.expect(note: [ :body, :published_at ])
+      params.require(:note).permit(:body, :published_at)
     end
 end

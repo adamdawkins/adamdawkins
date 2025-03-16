@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-  get ":year/:ordinal_day/t/:time" => "notes#show", constraints: { year: /\d{4}/, ordinal_day: /\d{1,3}/, time: /\d{6}/ }
+  get ":year/:ordinal_day/t/:time" => "notes#show", 
+      constraints: { year: /\d{4}/, ordinal_day: /\d{1,3}/, time: /\d{6}/ },
+      as: :notes_permalink
   
   resources :notes do
     resources :publishings, only: :create
     delete "publishings" => "publishings#destroy"
   end
   
-  get "articles/:year/:ordinal_day/t/:time" => "articles#show", constraints: { year: /\d{4}/, ordinal_day: /\d{1,3}/, time: /\d{6}/ }
+  get "articles/:year/:ordinal_day/t/:time" => "articles#show", 
+      constraints: { year: /\d{4}/, ordinal_day: /\d{1,3}/, time: /\d{6}/ },
+      as: :articles_permalink
   
   resources :articles do
     resources :publishings, only: :create

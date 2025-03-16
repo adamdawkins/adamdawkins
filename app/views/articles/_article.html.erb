@@ -1,16 +1,28 @@
 <article id="<%= dom_id article %>" class="h-entry">
-  <h2 class="p-name"><%= link_to article.title, article %></h2>
+  <h2 class="p-name">
+    <% if article.published_at %>
+      <%= link_to article.title, articles_permalink_path(year: article.published_at.year, 
+                                                        ordinal_day: article.published_at.yday, 
+                                                        time: article.published_at.strftime('%H%M%S')) %>
+    <% else %>
+      <%= link_to article.title, article %>
+    <% end %>
+  </h2>
   
   <div class="e-content">
     <%= markdown article.body %>
   </div>
   
   <small>
-    Published
-    <%= link_to article_permalink_path(article), class: "u-url" do %>
-      <time class="dt-published" datetime="<%= article.published_at.to_fs(:iso8601) %>">
-        <%= article.published_at.to_fs(:short) %>
-      </time>
+    <% if article.published_at %>
+      Published
+      <%= link_to articles_permalink_path(year: article.published_at.year, 
+                                         ordinal_day: article.published_at.yday, 
+                                         time: article.published_at.strftime('%H%M%S')), class: "u-url" do %>
+        <time class="dt-published" datetime="<%= article.published_at.to_fs(:iso8601) %>">
+          <%= article.published_at.to_fs(:short) %>
+        </time>
+      <% end %>
     <% end %>
   </small>
 </article>

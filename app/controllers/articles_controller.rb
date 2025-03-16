@@ -30,7 +30,14 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to @article, notice: "Article was successfully created."
+      if @article.published_at
+        redirect_to articles_permalink_path(year: @article.published_at.year, 
+                                  ordinal_day: @article.published_at.yday, 
+                                  time: @article.published_at.strftime('%H%M%S')), 
+                  notice: "Article was successfully created."
+      else
+        redirect_to article_path(@article), notice: "Article was successfully created."
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,7 +46,15 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   def update
     if @article.update(article_params)
-      redirect_to @article, notice: "Article was successfully updated.", status: :see_other
+      if @article.published_at
+        redirect_to articles_permalink_path(year: @article.published_at.year, 
+                                    ordinal_day: @article.published_at.yday, 
+                                    time: @article.published_at.strftime('%H%M%S')), 
+                    notice: "Article was successfully updated.", 
+                    status: :see_other
+      else
+        redirect_to article_path(@article), notice: "Article was successfully updated.", status: :see_other
+      end
     else
       render :edit, status: :unprocessable_entity
     end
