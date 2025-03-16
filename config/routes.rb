@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     delete "publishings" => "publishings#destroy"
   end
   
-  get "articles/:year/:ordinal_day/t/:time" => "articles#show", 
+  get "articles/:year/:ordinal_day/t/:time(/:slug)" => "articles#show", 
       constraints: { year: /\d{4}/, ordinal_day: /\d{1,3}/, time: /\d{6}/ },
       as: :articles_permalink
   

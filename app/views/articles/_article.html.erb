@@ -2,8 +2,9 @@
   <h2 class="p-name">
     <% if article.published_at %>
       <%= link_to article.title, articles_permalink_path(year: article.published_at.year, 
-                                                        ordinal_day: article.published_at.yday, 
-                                                        time: article.published_at.strftime('%H%M%S')) %>
+                                                       ordinal_day: article.published_at.yday, 
+                                                       time: article.published_at.strftime('%H%M%S'),
+                                                       slug: article.title.parameterize) %>
     <% else %>
       <%= link_to article.title, article %>
     <% end %>
@@ -18,7 +19,8 @@
       Published
       <%= link_to articles_permalink_path(year: article.published_at.year, 
                                          ordinal_day: article.published_at.yday, 
-                                         time: article.published_at.strftime('%H%M%S')), class: "u-url" do %>
+                                         time: article.published_at.strftime('%H%M%S'),
+                                         slug: article.title.parameterize), class: "u-url" do %>
         <time class="dt-published" datetime="<%= article.published_at.to_fs(:iso8601) %>">
           <%= article.published_at.to_fs(:short) %>
         </time>

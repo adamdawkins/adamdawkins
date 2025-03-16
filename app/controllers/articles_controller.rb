@@ -33,7 +33,8 @@ class ArticlesController < ApplicationController
       if @article.published_at
         redirect_to articles_permalink_path(year: @article.published_at.year, 
                                   ordinal_day: @article.published_at.yday, 
-                                  time: @article.published_at.strftime('%H%M%S')), 
+                                  time: @article.published_at.strftime('%H%M%S'),
+                                  slug: @article.title.parameterize), 
                   notice: "Article was successfully created."
       else
         redirect_to article_path(@article), notice: "Article was successfully created."
@@ -49,7 +50,8 @@ class ArticlesController < ApplicationController
       if @article.published_at
         redirect_to articles_permalink_path(year: @article.published_at.year, 
                                     ordinal_day: @article.published_at.yday, 
-                                    time: @article.published_at.strftime('%H%M%S')), 
+                                    time: @article.published_at.strftime('%H%M%S'),
+                                    slug: @article.title.parameterize), 
                     notice: "Article was successfully updated.", 
                     status: :see_other
       else
