@@ -22,20 +22,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_16_215951) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.string "author"
-    t.string "cover_url"
-    t.string "isbn"
-    t.string "status"
-    t.date "date_started"
-    t.date "date_finished"
-    t.date "date_paused"
-    t.date "date_abandoned"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
   end
 
@@ -113,14 +99,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_16_215951) do
     t.string "in_reply_to"
   end
 
-  create_table "reading_progress_updates", force: :cascade do |t|
-    t.bigint "book_id", null: false
-    t.integer "percentage"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_reading_progress_updates_on_book_id"
-  end
-
   create_table "sent_mentions", force: :cascade do |t|
     t.bigint "post_id"
     t.string "target"
@@ -149,7 +127,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_16_215951) do
 
   add_foreign_key "indie_mark_items", "indie_mark_levels"
   add_foreign_key "mentions", "posts"
-  add_foreign_key "reading_progress_updates", "books"
   add_foreign_key "sent_mentions", "posts"
   add_foreign_key "syndicates", "posts"
   add_foreign_key "syndicates", "silos"
