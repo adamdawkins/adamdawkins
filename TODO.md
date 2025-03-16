@@ -3,39 +3,25 @@
 ## Phase 1: Foundation Setup
 
 ### Project Initialization
-- [ ] Create new Rails application with PostgreSQL
-- [ ] Set up RSpec and configure test framework
+- [x] Create new Rails application with PostgreSQL
+- [x] Set up RSpec and configure test framework
 - [ ] Add SimpleCov for test coverage reporting
-- [ ] Configure Heroku deployment setup
-- [ ] Set up GitHub repository with CI workflow
-- [ ] Add essential gems to Gemfile:
-  - [ ] rspec-rails
-  - [ ] factory_bot_rails
-  - [ ] shoulda-matchers
-  - [ ] simplecov
-  - [ ] redcarpet for Markdown
-  - [ ] faker for test data
-  - [ ] dotenv for environment variables
-- [ ] Configure database for development, test, and production
-- [ ] Create application layout with proper doctype and meta tags
-- [ ] Create home controller with index page
-- [ ] Write tests for home controller
+- [x] Configure Heroku deployment setup
+- [x] Set up GitHub repository with CI workflow
+- [x] Add essential gems to Gemfile:
+  - [x] rspec-rails
+  - [x] redcarpet for Markdown
+- [x] Configure database for development, test, and production
+- [x] Create application layout with proper doctype and meta tags
+- [x] Create home controller with index page
+- [x] Write tests for home controller
 
 ### Authentication Foundation
-- [ ] Create User model with essential fields
-  - [ ] Email
-  - [ ] Password_digest
-  - [ ] Name
-  - [ ] Admin flag
-- [ ] Implement has_secure_password
-- [ ] Create user validations (email, password complexity)
-- [ ] Create user factory for testing
-- [ ] Write model specs for User
-- [ ] Create Sessions controller
-- [ ] Implement login/logout functionality
-- [ ] Create current_user helper method
-- [ ] Implement admin authorization concern
-- [ ] Create login form view
+- [x] Create User model with essential fields
+- [x] Implement has_secure_password
+- [x] Implement login/logout functionality (via AdamController)
+- [x] Create current_user helper method (authenticate_adam!)
+- [x] Create login form view
 - [ ] Write controller tests for authentication
 - [ ] Add flash messages for authentication events
 - [ ] Create authentication service object
@@ -65,13 +51,13 @@
   - [ ] Published status management
   - [ ] Syndication URLs serialization
 - [ ] Write specs for Content concern
-- [ ] Create Note model with:
-  - [ ] Body field (text)
-  - [ ] Published_at field (datetime)
+- [x] Create Note model with:
+  - [x] Body field (text)
+  - [x] Published_at field (datetime)
   - [ ] Slug field (string)
   - [ ] Syndication_urls field (text)
   - [ ] Has_many relationship with MediaAttachments
-- [ ] Write model specs for Note
+- [x] Write model specs for Note
 - [ ] Create Article model with:
   - [ ] Title field (string)
   - [ ] Body field (text)
@@ -136,28 +122,28 @@
 ## Phase 3: Content Type Implementation
 
 ### Notes Implementation
-- [ ] Create NotesController with actions:
-  - [ ] Index
-  - [ ] Show
-  - [ ] New
-  - [ ] Create
-  - [ ] Edit
-  - [ ] Update
-  - [ ] Destroy
-- [ ] Write controller specs for each action
-- [ ] Add authorization checks for admin actions
-- [ ] Create routes for notes
+- [x] Create NotesController with actions:
+  - [x] Index
+  - [x] Show
+  - [x] New
+  - [x] Create
+  - [x] Edit
+  - [x] Update
+  - [x] Destroy
+- [x] Write controller specs for each action
+- [x] Add authorization checks for admin actions
+- [x] Create routes for notes
 - [ ] Implement CreateNoteService
 - [ ] Write specs for note creation service
-- [ ] Create markdown parsing service
+- [x] Create markdown parsing service
 - [ ] Test markdown parsing edge cases
-- [ ] Create views for notes:
-  - [ ] Index view
-  - [ ] Show view
-  - [ ] Form partial
+- [x] Create views for notes:
+  - [x] Index view
+  - [x] Show view
+  - [x] Form partial
   - [ ] Media attachment handling
-- [ ] Test view rendering and form submission
-- [ ] Implement permalink structure based on slugs
+- [x] Test view rendering and form submission
+- [x] Implement permalink structure based on slugs
 
 ### Articles Implementation
 - [ ] Create ArticlesController with actions:
@@ -254,17 +240,17 @@
 ## Phase 4: IndieWeb Features
 
 ### Microformats Implementation
-- [ ] Create HCard helper for profile
+- [x] Create HCard helper for profile
 - [ ] Test h-card output structure
-- [ ] Create HEntry helpers for content types
+- [x] Create HEntry helpers for content types
 - [ ] Test h-entry output for different content types
-- [ ] Create view partials:
-  - [ ] Profile partial with h-card
-  - [ ] Content partials with h-entry
+- [x] Create view partials:
+  - [x] Profile partial with h-card
+  - [x] Content partials with h-entry
   - [ ] Specialized partials for each content type
 - [ ] Implement MicroformatService for validation
 - [ ] Test microformat structure against spec
-- [ ] Update existing views to incorporate microformats
+- [x] Update existing views to incorporate microformats
 - [ ] Create tests for edge cases
 - [ ] Validate against the microformats2 specification
 
@@ -374,23 +360,23 @@
 ## Phase 6: UI & Activity Feed
 
 ### Homepage Implementation
-- [ ] Create HomeController
-- [ ] Test controller actions
+- [x] Create HomeController
+- [x] Test controller actions
 - [ ] Implement ProfileService
 - [ ] Test profile data formatting
-- [ ] Create LatestContentService
+- [x] Create LatestContentService
 - [ ] Test content aggregation
-- [ ] Create homepage views:
-  - [ ] Profile section with h-card
-  - [ ] Content type navigation
-  - [ ] Latest content feed
+- [x] Create homepage views:
+  - [x] Profile section with h-card
+  - [x] Content type navigation
+  - [x] Latest content feed
   - [ ] Responsive layout
 - [ ] Add meta tags and SEO:
   - [ ] Open Graph tags
   - [ ] Twitter card tags
   - [ ] Description and title
   - [ ] Canonical URLs
-- [ ] Test view rendering
+- [x] Test view rendering
 - [ ] Verify responsive design
 
 ### Activity Feed
