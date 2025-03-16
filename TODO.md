@@ -58,14 +58,14 @@
   - [ ] Syndication_urls field (text)
   - [ ] Has_many relationship with MediaAttachments
 - [x] Write model specs for Note
-- [ ] Create Article model with:
-  - [ ] Title field (string)
-  - [ ] Body field (text)
-  - [ ] Published_at field (datetime)
+- [x] Create Article model with:
+  - [x] Title field (string)
+  - [x] Body field (text)
+  - [x] Published_at field (datetime)
   - [ ] Slug field (string)
   - [ ] Syndication_urls field (text)
   - [ ] Has_many relationship with MediaAttachments
-- [ ] Write model specs for Article
+- [x] Write model specs for Article
 - [ ] Implement slug generation service
 - [ ] Test slug generation edge cases
 - [ ] Create factories for Note and Article
@@ -146,28 +146,28 @@
 - [x] Implement permalink structure based on slugs
 
 ### Articles Implementation
-- [ ] Create ArticlesController with actions:
-  - [ ] Index
-  - [ ] Show
-  - [ ] New
-  - [ ] Create
-  - [ ] Edit
-  - [ ] Update
-  - [ ] Destroy
-- [ ] Write controller specs for each action
-- [ ] Add authorization checks for admin actions
-- [ ] Create routes for articles
+- [x] Create ArticlesController with actions:
+  - [x] Index
+  - [x] Show
+  - [x] New
+  - [x] Create
+  - [x] Edit
+  - [x] Update
+  - [x] Destroy
+- [x] Write controller specs for each action
+- [x] Add authorization checks for admin actions
+- [x] Create routes for articles
 - [ ] Implement CreateArticleService
-- [ ] Write specs for article creation service
-- [ ] Enhance markdown parsing for articles
-- [ ] Test advanced markdown features
-- [ ] Create views for articles:
-  - [ ] Index view
-  - [ ] Show view
-  - [ ] Form partial
+- [x] Write specs for article creation service
+- [x] Enhance markdown parsing for articles
+- [x] Test advanced markdown features
+- [x] Create views for articles:
+  - [x] Index view
+  - [x] Show view
+  - [x] Form partial
   - [ ] Media attachment handling
-- [ ] Test view rendering and form submission
-- [ ] Implement permalink structure based on slugs
+- [x] Test view rendering and form submission
+- [x] Implement permalink structure based on slugs
 
 ### Movie Reviews Implementation
 - [ ] Create MovieReviewsController with actions:

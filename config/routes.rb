@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  get ":year/:ordinal_day/t/:time" => "notes#show"
+  get ":year/:ordinal_day/t/:time" => "notes#show", constraints: { year: /\d{4}/, ordinal_day: /\d{1,3}/, time: /\d{6}/ }
+  
   resources :notes do
+    resources :publishings, only: :create
+    delete "publishings" => "publishings#destroy"
+  end
+  
+  get "articles/:year/:ordinal_day/t/:time" => "articles#show", constraints: { year: /\d{4}/, ordinal_day: /\d{1,3}/, time: /\d{6}/ }
+  
+  resources :articles do
     resources :publishings, only: :create
     delete "publishings" => "publishings#destroy"
   end
