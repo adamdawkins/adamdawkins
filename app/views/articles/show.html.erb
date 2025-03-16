@@ -3,8 +3,12 @@
 <%= render @article %>
 
 <div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
+  <% if session[:adam] %>
+    <%= link_to "Edit this article", edit_article_path(@article) %> |
+  <% end %>
   <%= link_to "Back to articles", articles_path %>
 
-  <%= button_to "Destroy this article", @article, method: :delete %>
+  <% if session[:adam] %>
+    <%= button_to "Destroy this article", @article, method: :delete %>
+  <% end %>
 </div>
