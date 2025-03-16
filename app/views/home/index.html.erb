@@ -4,6 +4,19 @@
   <p>I've been a developer since 2008, and most days, we're using Ruby on Rails.</p>
   <p>This is where I write about things.</p>
 </header>
+
+<section>
+  <h2>Recent Notes</h2>
+  <% if @recent_notes.any? %>
+    <div class="notes">
+      <%= render partial: 'notes/note', collection: @recent_notes %>
+    </div>
+    <p><%= link_to 'View all notes', notes_path %></p>
+  <% else %>
+    <p>No notes yet.</p>
+  <% end %>
+</section>
+
 <section>
   <h2>Elsewhere</h2>
   <ul>
